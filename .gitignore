@@ -1,0 +1,75 @@
+/*
+Descripción
+
+Dada esta secuencia 1, 12, 123, 1234, ..., 12345678910, .... Dados los primeros N
+elementos de la secuencia, debes determinar la cantidad de números en ella que son divisibles por 3.
+Especificación de entrada
+
+La entrada contiene a N (1 <= N <= 2^31-1).
+Especificación de salida
+
+Escribir la respuesta.
+Ejemplo de entrada
+
+4
+Ejemplo de salida
+
+2
+ */
+package Division3Caracteres;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author mou
+ */
+public class Division3 {
+
+    public static void main(String[] args) {
+        Scanner leer = new Scanner(System.in);
+        String str = leer.nextLine();
+
+
+        //"123456789101112131415161718192021222323252627282930"
+
+        /*
+         * 3.-12,3                2
+         * 4.-12,3                2
+         * 5.-12,3,45,345,12345   5
+         * 6.-12,3,45,345,12345,3456,456,123456     8
+         */
+        String concat = "";
+
+        int num = leer.nextInt();
+
+        int contCAD = 0;
+        int contCAR = 0;
+
+        int cont2=0;
+        
+        for (int i = 0; i < num; i++) {
+            cont2=i+2;
+            char c = str.charAt(i);
+
+            if ((c == '1') || (c == '2') || (c == '3') || (c == '4') || (c == '5') || (c == '6')
+                    || (c == '7') || (c == '8') || (c == '9') || (c == '1') || (c == '0')) {
+
+                int caracter = Integer.parseInt("" + c);
+                concat = concat + c;
+                int cadena = Integer.parseInt(concat);
+
+                if (cadena % 3 == 0) {
+                    System.out.println(cadena);
+                    contCAD++;
+                } else if (caracter % 3 == 0) {
+                    contCAR++;
+                }
+            }
+        }
+
+
+
+        System.out.println("" + (contCAD + contCAR));
+    }
+}
